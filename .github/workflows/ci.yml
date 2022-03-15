@@ -36,14 +36,14 @@ jobs:
       with:
         submodules: recursive
 
-    - name: Cargo Target Cache
+    - name: Cargo Cache
       uses: actions/cache@v1
       with:
-        path: target
-        key: ${{ runner.os }}-cargo-target-${{ hashFiles('Cargo.toml') }}
+        path: ~/.cargo
+        key: ${{ runner.os }}-cargo-${{ hashFiles('Cargo.toml') }}
         restore-keys: |
-          ${{ runner.os }}-cargo-target-${{ hashFiles('Cargo.toml') }}
-          ${{ runner.os }}-cargo-target
+          ${{ runner.os }}-cargo-${{ hashFiles('Cargo.toml') }}
+          ${{ runner.os }}-cargo
 
     - name: Cargo build
       uses: actions-rs/cargo@v1
